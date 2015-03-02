@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.oakraw.myweather.R;
 import com.oakraw.myweather.fragment.WeatherFragment;
 
 /**
@@ -17,7 +18,14 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new WeatherFragment();
+        switch(position){
+            case 0:
+                return WeatherFragment.newInstance("Bangkok", R.drawable.bangkok);
+            case 1:
+                return WeatherFragment.newInstance("London", R.drawable.london);
+            default:
+                return WeatherFragment.newInstance("Paris", R.drawable.paris);
+        }
     }
 
     @Override

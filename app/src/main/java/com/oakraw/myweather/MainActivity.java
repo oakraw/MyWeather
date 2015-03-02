@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.oakraw.myweather.adapter.MyPagerAdapter;
+import com.oakraw.myweather.custom.ParallaxPageTransformer;
 
 
 public class MainActivity extends FragmentActivity {
@@ -22,6 +23,13 @@ public class MainActivity extends FragmentActivity {
 
         pager = (ViewPager)findViewById(R.id.pager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+
+        ParallaxPageTransformer pageTransformer = new ParallaxPageTransformer()
+                .addViewToParallax(new ParallaxPageTransformer.ParallaxTransformInformation(R.id.bg, 2, 2))
+                .addViewToParallax(new ParallaxPageTransformer.ParallaxTransformInformation(R.id.foreground, -0.65f,
+                        ParallaxPageTransformer.ParallaxTransformInformation.PARALLAX_EFFECT_DEFAULT));
+
+        pager.setPageTransformer(true, pageTransformer);
     }
 
 
