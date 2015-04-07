@@ -6,9 +6,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.oakraw.myweather.adapter.CityAdapter;
@@ -38,6 +40,14 @@ public class SelectCityActivity extends Activity {
         listView = (ListView) findViewById(R.id.listView);
         mAdapter = new CityAdapter(this, cityList);
         listView.setAdapter(mAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), cityList.get(position), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override

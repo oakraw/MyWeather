@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.oakraw.myweather.R;
 
 import java.util.ArrayList;
 
@@ -39,7 +42,11 @@ public class CityAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //inflater.inflate()
-        return null;
+        View rootView = inflater.inflate(R.layout.city_list_item, parent, false);
+        TextView tv = (TextView)rootView.findViewById(R.id.textView);
+
+        tv.setText(cities.get(position));
+
+        return rootView;
     }
 }
